@@ -1,1 +1,5 @@
 sss
+# ignore all logs
+*.log
+
+*.dat
