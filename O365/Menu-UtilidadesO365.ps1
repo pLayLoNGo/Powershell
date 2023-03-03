@@ -1,3 +1,41 @@
+<#
+.SYNOPSIS
+Menu O365
+
+.DESCRIPTION
+Script con varias utilidades para O365
+
+.NOTES
+File Name   : Menu-UtilidadesO365.ps1
+Author      : Borja Terres
+Version     : 1.2
+Date        : 31-Marzo-2020
+Update      : 09-Febrero-2021
+Requires    : PowerShell 5.1
+Module      : ActiveDirectory, MSOnline > Obsoleto usar Azure AD PowerShell 
+OS          : Windows
+
+.FUNCTIONALITY
+Conexión office365
+Conexión Exchange Online
+Conexión Azure AD
+Modificación de buzones para que puedan recibir citas en el calendario
+Ve y modifica la directiva de retención de los buzones. Solo los modifica con la directiva Kiosko
+Comprueba en que buzones está activa la autenticacion multifactor
+Obtiene el tamaño de los buzones
+Lista los usuarios no se han logado en los últimos 90 días
+Indica si se han creado reglas de reenvio en los buzones
+Bloquea la creación de grupos en Office365 por parte de los usuarios excepto TI
+Permite la creación de grupos en Office365 por parte de los usuarios
+Instalación de módulos en PowerShell
+Actualización de módulos en Powershell
+Varias funciones AD onpremise
+
+
+#>
+
+
+
 $Titulo1 = "Conjunto de scripts para realizar funciones habituales de Office365 y Exchange Online versión 1.2"
 $GroupName = ""
 $AllowGroupCreation = "True"
@@ -60,7 +98,7 @@ Write-Host -foregroundcolor Black -backgroundcolor Yellow "Acuérdate de descone
 function FCalendario
 {
 Clear-Host
-$Buzon = Read-Host "Introduce el nombre del buzon, (x ej. xxx@fhecor.es o xxx)"
+$Buzon = Read-Host "Introduce el nombre del buzon, (x ej. xxx@dominio.es o xxx)"
 if ($Buzon) {
 Set-CasMailbox $Buzon -ImapUseProtocolDefaults $false -PopUseProtocolDefaults $false -ImapForceIcalForCalendarRetrievalOption $true -PopForceICalForCalendarRetrievalOption $true
 } else

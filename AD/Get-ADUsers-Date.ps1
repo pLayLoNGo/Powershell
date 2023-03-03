@@ -1,5 +1,5 @@
 #Sacar usuarios por fecha de expiración de contraseña
-$ruta ='C:\Scripts\Politica\Pendientes\SpinolaPdi.csv'
+$ruta ='archivo.csv'
 
 #Fecha
 $fecha = "21/04/2021 08:00:00AM"
