@@ -1,16 +1,19 @@
 <#
-.SYNOPSIS Obtiene los elementos de copia de seguridad de un Server SQL.
+.SYNOPSIS 
+Obtiene los elementos de copia de seguridad de un Server SQL.
 
-.DESCRIPTION Busca en las copias de seguridad, tanto en las instancias como los elementos de backup de los SQL
+.DESCRIPTION 
+Busca en las copias de seguridad, tanto en las instancias como los elementos de backup de los SQL
 
-.NOTES File Name : Revisa_BK_SQL.ps1
-Author   : Borja Terres
-Version  : 1.0
-Date     : 04-agosto-2022
-Update   : 
-Requires : PowerShell 5.1 or PowerShell 7.1.x (Core)
-Module   : Azure Az, Az.RecoveryServices
-OS       : Windows
+.NOTES 
+File Name     : Revisa_BK_SQL.ps1
+Author        : Borja Terres
+Version       : 1.0
+Date          : 04-agosto-2022
+Update        : 
+Requires      : PowerShell 5.1 or PowerShell 7.1.x (Core)
+Module        : Azure Az, Az.RecoveryServices
+OS            : Windows
  
 #>
 
