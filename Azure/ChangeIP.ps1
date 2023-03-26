@@ -1,5 +1,5 @@
 #Set the variables 
-$SubscriptionID= "SUBSID"
+$SubscriptionName= "SusbcriptionName"
 $ResourceGroup = "RGVnet"
 $NetInter="NICName"
 $VNET = "VNetName"
@@ -8,7 +8,7 @@ $PrivateIP = "10.162.3.139"
 $ResourceGroupVM = "RGVM"
 
 
-#Select-AzSubscription -SubscriptionId $SubscriptionId 
+Set-Azcontext $SubscriptionName
 
 #Check whether the new IP address is available in the virtual network.
 Get-AzVirtualNetwork -Name $VNET -ResourceGroupName $ResourceGroup | Test-AzPrivateIPAddressAvailability -IPAddress $PrivateIP
