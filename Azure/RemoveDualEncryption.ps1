@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Soluciona el problema de la encriptación doble si se mueve una VM de subscripción.
+
+.DESCRIPTION 
+Para la VM, elimina el encriptado, levanta la VM y elimina la extensión AzureDiskEncryption
+
+.NOTES
+File Name : RemoveDualEncryption.ps1
+Author    : Borja Terres
+Version   : 1.0
+Date      : 23-noviembre-2022
+Update    : 
+Requires  : PowerShell 5.1 or PowerShell 7.1.x (Core)
+Module    : Azure Az
+OS        : Windows
+ 
+#>
+
 Param (
 
     [Parameter(Position = 0, Mandatory = $True, HelpMessage = 'Nombre de la VM')]
@@ -18,31 +37,21 @@ $block = @"
 | | | || | | | \ V  V / | || | | || (_| || (_) | \ V  V / \__ \
 |_| |_||_| |_|  \_/\_/  |_||_| |_| \__,_| \___/   \_/\_/  |___/
 
-
-
-
-
 "@
 
 cls
-#SUSTITUIR POR SWITCH
-if ($targetSubscriptionName -eq "SUBS1") {
-    $targetSubscriptionId = ''
-    
-     }
-else {
-    $targetSubscriptionId = ''
-}
 
 Write-Host $block -ForegroundColor Red
-Select-AzSubscription -SubscriptionId $targetSubscriptionId 
+
+
+Set-Azcontext $targetSubscriptionName
 
 #Apaga la máquina y elimina las configuraciones de encriptación doble
 Write-Host "Apagando vm: $virtualMachineName" -Foreground Yellow
 Stop-AzVM -ResourceGroupName $RG -Name $virtualMachineName -Force
 $vm = Get-AzVM -ResourceGroupName $RG -VMName $virtualMachineName
 $vm.StorageProfile.OsDisk.EncryptionSettings = $null
-Write-Host "Actualizando configuración encriptado vm: $virtualMachineName" -Foreground Yellow
+Write-Host "Actualizando configuración encriptado VM: $virtualMachineName" -Foreground Yellow
 #Actualiza la VM con la configuración
 $vm | Update-AzVM
 #Muestra la configuración si es correcta. Si no saldría en blanco
