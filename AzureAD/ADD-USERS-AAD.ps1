@@ -3,9 +3,11 @@
 ###################
 
 <#
-.SYNOPSIS Añade usuarios a un grupo AAD
+.SYNOPSIS 
+Añade usuarios a un grupo AAD
 
-.DESCRIPTION Incluye los usuarios a un grupo en Azure AD
+.DESCRIPTION 
+Incluye los usuarios a un grupo en Azure AD
 
 
 .NOTES 
