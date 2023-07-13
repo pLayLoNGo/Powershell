@@ -1,4 +1,4 @@
-$servers = Get-Content -Path C:\SOPORTE\BTJ\Scripts\INPUT\servidores_test_puertos.txt
+$servers = Get-Content -Path C:\test_puertos.txt
 $puertos   =  "3389"
 foreach ($server in $servers) {
 
@@ -7,7 +7,7 @@ foreach ($server in $servers) {
     If ($TestPuertos.tcpTestSucceeded -eq $false)
     {
         Write-Host $server $puertos -Separator " => " -ForegroundColor Red 
-        $server | Out-file -FilePath C:\Scripts\output\error3389.txt -Append
+        $server+","+ $TestPuertos.RemoteAddress.IPAddressToString | Out-file -FilePath C:\Scripts\output\error3389.txt -Append
 
     }
 
